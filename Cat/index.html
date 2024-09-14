@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Vache | Dev</title>
+  </head>
+  <body>
+    <h1 align="center">Welcome or something idk...</h1>
+    <p align="center">look what i can do</p>
+    <div id="first-cat">
+      <img
+        id="cat"
+        src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x4.jpg"
+        alt="cat"
+        title="cat" />
+    </div>
+    <div>
+      <button onclick="clicked()">Dont Click Me!</button>
+      <button onclick="wrong()">Click this one</button>
+    </div>
+    <div id="second-cat"></div>
+
+    <script>
+      const clicked = () => {
+        alert("WHAT DID I TELL YOU?? DONT CLICK AGAIN");
+      };
+
+      const catarray = [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhSVzjsr3qJ1lJ-MEVpwuMQ_P7WJ8IU_jVSw&s",
+        "https://placekitten.com/300/200",
+        "https://cdn2.thecatapi.com/images/MTY3ODIyMQ.jpg",
+        "https://cataas.com/cat",
+        "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg",
+      ];
+
+      const wrong = () => {
+        const img1 = document.getElementById("cat");
+
+        // Pick a random cat image from the array
+        const randomIndex = Math.floor(Math.random() * catarray.length);
+        const randomCat = catarray[randomIndex];
+
+        const img2 = document.createElement("img");
+        img2.src = randomCat;
+        img2.alt = "kitten";
+        img2.style.display = "block";
+
+        // Append the random cat image to the second-cat div
+        document.getElementById("second-cat").appendChild(img2);
+
+        // Hide the original cat image
+        img1.style.display = "none";
+      };
+    </script>
+  </body>
+</html>
