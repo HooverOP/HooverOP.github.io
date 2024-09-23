@@ -3,9 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Main Hub</title>
+    <title>Dashboard</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        overflow: hidden;
+        background-color: rgb(39, 39, 39);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        align-items: center;
+        height: 100vh;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        background-color: black;
+        padding: 20px;
+        border-radius: 25px;
+      }
+    </style>
   </head>
   <body>
-    <a href="/Assignment1/">First</a>
+    <h1>The Uni Assignment&apos;s / Work</h1>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+      ">
+      <a href="/Cat/">Cat</a>
+      <a href="/Assignment1/">Assignment 1</a>
+      <a href="/Assignment2/">Assignment 2</a>
+    </div>
   </body>
 </html>
