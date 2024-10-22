@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.heading {
+  background-color: #55310d;
+  color: white;
+  text-align: center;
+  padding: 8vh;
+}
+
+.navBar {
+  background-color: #333333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.navBar ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-size: large;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.donateBtn {
+  background-color: #ffc107;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: black;
+  font-weight: 900;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hero {
+  background-image: url(hero-image.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  height: 40vh;
+  color: #55310d;
+  text-align: center;
+  padding: 1rem;
+}
+
+.project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2rem;
+  gap: 2rem;
+}
+
+.cardContainer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 3rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  width: 30vw;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  max-width: 10vw;
+  border-radius: 0.5rem;
+}
+
+.footer {
+  background-color: #333333;
+  color: white;
+  text-align: center;
+  padding: 4vh;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    padding: 4vh;
+    font-size: 1.5rem;
+  }
+
+  .navBar ul {
+    gap: 1rem;
+    font-size: medium;
+  }
+
+  .hero {
+    font-size: 1.5rem;
+    height: auto;
+    padding: 2rem;
+  }
+
+  .donateBtn {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .cardContainer {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .card {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .footer {
+    font-size: 1rem;
+    padding: 2vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    padding: 2vh;
+    font-size: 1.2rem;
+  }
+
+  .navBar ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+
+  .donateBtn {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .card {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+    padding: 1vh;
+  }
+}
