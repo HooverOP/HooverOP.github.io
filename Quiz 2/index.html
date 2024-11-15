@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript DOM Manipulation Practice</title>
+    <style>
+      /* General reset and body styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        background-color: #f4f4f9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      /* Header styling */
+      header {
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #0066cc;
+        color: #fff;
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        margin-bottom: 5px;
+      }
+
+      .info {
+        font-size: 1.1rem;
+        color: #ffdd99;
+      }
+
+      /* Section styling */
+      section {
+        background-color: #fff;
+        width: 100%;
+        max-width: 800px;
+        padding: 20px;
+        margin: 10px 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      section h2 {
+        color: #0066cc;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .description,
+      .topic-item {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      /* List styling */
+      #topicsList {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      #topicsList .topic-item {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      /* Image styling */
+      #imageSection img {
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Link styling */
+      .external-link {
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .external-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Form styling */
+      #contactForm label {
+        font-weight: bold;
+      }
+
+      #contactForm input,
+      #contactForm textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 15px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+      }
+
+      #submitButton {
+        background-color: #0066cc;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      #submitButton:hover {
+        background-color: #004c99;
+      }
+
+      /* Footer styling */
+      footer {
+        text-align: center;
+        color: #555;
+        font-size: 0.9rem;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1 id="mainTitle">JavaScript DOM Manipulation Practice</h1>
+      <p class="info">
+        Learn to interact with the elements on this page using JavaScript.
+      </p>
+    </header>
+
+    <!-- Introduction Section -->
+    <section id="introSection">
+      <h2>Introduction</h2>
+      <p class="description">
+        This webpage allows you to practice accessing and updating elements
+        using JavaScript.
+      </p>
+      <p class="description">
+        Use different methods to target elements by their ID, class, tag name,
+        or CSS selector.
+      </p>
+    </section>
+
+    <!-- Topics List Section -->
+    <section>
+      <h2>Topics Covered</h2>
+      <ul id="topicsList">
+        <li class="topic-item">Accessing elements by ID</li>
+        <li class="topic-item">Accessing elements by class name</li>
+        <li class="topic-item">Accessing elements by tag name</li>
+        <li class="topic-item">Using querySelector and querySelectorAll</li>
+        <li class="topic-item">Manipulating attributes and content</li>
+      </ul>
+    </section>
+
+    <!-- Images Section -->
+    <section id="imageSection">
+      <h2>Gallery</h2>
+      <img id="mainImage" src="img1.png" alt="Placeholder Image" width="200" />
+      <img
+        class="thumbnail"
+        src="img2.png"
+        alt="Thumbnail Image 1"
+        width="100" />
+      <img
+        class="thumbnail"
+        src="img3.png"
+        alt="Thumbnail Image 2"
+        width="100" />
+    </section>
+
+    <!-- Links Section -->
+    <section>
+      <h2>Useful Links</h2>
+      <a href="https://www.example.com" class="external-link">Example Site</a>
+      <a href="https://www.another-example.com" class="external-link"
+        >Another Example Site</a
+      >
+    </section>
+
+    <!-- Form Section -->
+    <section id="formSection">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <button type="button" id="submitButton">Submit</button>
+      </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <p id="footerText">Thank you for visiting our practice page.</p>
+    </footer>
+
+    <!-- Script Section -->
+    <script src="script.js"></script>
+  </body>
+</html>
