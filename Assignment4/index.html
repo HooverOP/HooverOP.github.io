@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Events(typescript better)</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .hover-box {
+        width: 200px;
+        height: 100px;
+        background-color: lightblue;
+        margin: 10px;
+        text-align: center;
+        line-height: 100px;
+      }
+      .highlight {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title" onclick="changeTitle()">Click Me!</h1>
+    <button id="colorBtn">Change Background Color</button>
+    <input
+      id="textInput"
+      type="text"
+      placeholder="Type and lose focus"
+      onchange="inputChange()" />
+    <div class="hover-box" id="hoverDiv">Hover over me!</div>
+    <p id="mouseStatus">Mouse Status: Not over</p>
+    <p id="clickChain">Click sequence: None</p>
+    <button id="captureBubbleBtn">Event Propagation</button>
+  </body>
+  <script>
+    // Change title when clicked thingy
+    function changeTitle() {
+      const title = document.getElementById("title");
+      title.textContent = "Title Changed!";
+      title.style.color = "red";
+    }
+
+    // Change background color thingy css
+    document.getElementById("colorBtn").addEventListener("click", function () {
+      document.body.style.backgroundColor =
+        document.body.style.backgroundColor === "lightgrey"
+          ? "white"
+          : "lightgrey";
+    });
+
+    // Input change detectiong thingy console logger
+    function inputChange() {
+      console.log("Input changed!");
+    }
+
+    // Hover detection thingy
+    const hoverDiv = document.getElementById("hoverDiv");
+    hoverDiv.addEventListener("mouseover", function () {
+      hoverDiv.classList.add("highlight");
+      document.getElementById("mouseStatus").textContent = "Mouse Status: Over";
+    });
+    hoverDiv.addEventListener("mouseout", function () {
+      hoverDiv.classList.remove("highlight");
+      document.getElementById("mouseStatus").textContent =
+        "Mouse Status: Not over";
+    });
+
+    // Mouse down, up, and click thingy
+    let sequence = [];
+    const clickStatus = document.getElementById("clickChain");
+    hoverDiv.addEventListener("mousedown", function () {
+      sequence.push("Mouse Down");
+      clickStatus.textContent = `Click sequence: ${sequence.join(" > ")}`;
+    });
+    hoverDiv.addEventListener("mouseup", function () {
+      sequence.push("Mouse Up");
+      clickStatus.textContent = `Click sequence: ${sequence.join(" > ")}`;
+    });
+    hoverDiv.addEventListener("click", function () {
+      sequence.push("Mouse Click");
+      clickStatus.textContent = `Click sequence: ${sequence.join(" > ")}`;
+    });
+
+    //button thing u explained in class
+    const btn = document.getElementById("captureBubbleBtn");
+    document.body.addEventListener(
+      "click",
+      () => console.log("Body clicked!"),
+      false
+    );
+    btn.addEventListener(
+      "click",
+      () => console.log("Button clicked! (capture phase)"),
+      true
+    );
+    btn.addEventListener("click", () =>
+      console.log("Button clicked! (bubble phase)")
+    );
+  </script>
+</html>
