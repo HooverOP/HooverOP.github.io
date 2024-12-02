@@ -1,77 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7993350982092093"
-      crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>AdoptKa</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous" />
+
     <style>
-      * {
-        margin: 0px;
-        padding: 0px;
-        box-sizing: border-box;
-      }
       body {
-        overflow: hidden;
-        background-color: rgb(0, 3, 28);
-        color: white;
+        background-color: #c8dfcd;
+      }
+      .navbar-brand,
+      .nav-link {
+        transition: color 0.3s ease;
+      }
+      .nav-link:hover {
+        color: #28a745;
+      }
+      .clinic-card:hover,
+      .product-card:hover,
+      .card:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      .footer {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 1rem 0;
+        text-align: center;
+      }
+
+      .pets-scroll-container {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 2rem;
-        align-items: center;
-        height: 100vh;
-        font-family: poppins;
-      }
-      a {
-        text-decoration: none;
-        color: white;
-        background-color: rgb(18, 22, 63);
-        padding: 20px;
-        border-radius: 25px;
-        transition: all 0.3s linear;
-      }
-      a:hover {
-        color: black;
-        background-color: white;
-      }
-      div {
-        display: flex;
+        overflow-x: auto;
         gap: 1rem;
+        padding: 0.5rem;
+        scroll-behavior: smooth;
+        cursor: grab;
+      }
+
+      .pets-scroll-container::-webkit-scrollbar {
+        display: none; /* Hide scrollbar */
+      }
+
+      .pets-scroll-container:active {
+        cursor: grabbing;
+      }
+
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
   <body>
-    <h1>Vache&apos;s University Work</h1>
-    <hr style="width: 80%; margin-top: 2rem" />
-    <h2>Assignment&apos;s</h2>
-    <div>
-      <a href="/Assignment1/">Assignment 1</a>
-      <a href="/Assignment2/">Assignment 2</a>
-      <a href="/Assignment3/">Assignment 3</a>
-      <a href="/Assignment4/">Assignment 4</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">AdoptKa</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="/clinics.html">Clinics</a>
+            <a class="nav-link" href="/products.html">Products</a>
+            <a class="nav-link" href="/about.html">About Us</a>
+            <a class="nav-link disabled" aria-disabled="true">Partner</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Welcome Section -->
+    <div class="container mt-4">
+      <div class="row align-items-center">
+        <div class="col-md-4 col-12 p-3 text-center">
+          <img
+            src="/img/logo.jpg"
+            alt="logo"
+            class="img-fluid rounded-circle" />
+        </div>
+        <div class="col-md-8 col-12 p-3">
+          <h1 class="text-success">Welcome to AdoptKa</h1>
+          <p>
+            At AdoptKa, we’re dedicated to finding loving homes for pets in need
+            and providing quality healthcare services for all pets. Explore our
+            adoption options, book appointments with our skilled veterinarians,
+            and check out our range of pet products!
+          </p>
+        </div>
+      </div>
     </div>
-    <hr style="width: 80%; margin-top: 2rem" />
-    <h2>In Class Work</h2>
-    <div>
-      <a href="/Cat/">Cat (non-uni work)</a>
-      <a href="/DivPractice/">Div Practice</a>
-      <a href="/HandsFoundation/">Hands Foundation</a>
+
+    <div class="container my-5">
+      <h2 class="text-center text-success mb-5">Available Pets for Adoption</h2>
+      <div class="pets-scroll-container" id="petsContainer">
+        <!-- Pet 1 -->
+        <div class="card" style="width: 18rem; flex-shrink: 0">
+          <a href="/pet.html">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGhCFXE1agtTKU9200N0bmpE5f27nPsNgXyB8ZihQSDwHI9N5XlvsrmrD0UuZctJejh_8&usqp=CAU"
+              class="card-img-top"
+              alt="Mr. Bambam" />
+          </a>
+          <div class="card-body">
+            <p class="card-text text-center">
+              Mr. Bambam | Cat | Favorite thing is eating
+            </p>
+          </div>
+        </div>
+        <!-- Pet 2 -->
+        <div class="card" style="width: 18rem; flex-shrink: 0">
+          <a href="/pet.html">
+            <img
+              src="https://www.bokksu.com/cdn/shop/articles/shutterstock_2331307681.jpg?v=1707885857"
+              class="card-img-top"
+              alt="Mr. Bambam" />
+          </a>
+          <div class="card-body">
+            <p class="card-text text-center">
+              Kyote | Dog | Loves toys, and walks
+            </p>
+          </div>
+        </div>
+        <!-- Add more pets -->
+      </div>
     </div>
-    <hr style="width: 80%; margin-top: 2rem" />
-    <h2>Quiz</h2>
-    <div>
-      <a href="/Quiz1/">Quiz 1</a>
-      <a href="/Quiz2/">Quiz 2</a>
-      <a href="/For MT/">Midterm 1</a>
+
+    <!-- Clinics -->
+    <div class="container my-5">
+      <h1 class="text-center text-success">Veterinary Clinics</h1>
+      <p class="text-center mb-4">
+        Find trusted veterinary clinics for your pet's healthcare needs.
+      </p>
+      <div class="row g-4">
+        <div class="col-md-4 col-12">
+          <a href="/clinicsPage.html" class="text-decoration-none">
+            <div class="card clinic-card">
+              <img
+                src="/img/DALL·E 2024-11-24 19.50.28 - A visually appealing and professional banner-style image for a veterinary clinic named 'Happy Paws Veterinary'. The text 'Happy Paws Veterinary' is pr.webp"
+                class="card-img-top"
+                alt="Happy Paws Veterinary" />
+              <div class="card-body">
+                <h5 class="card-title text-center">Happy Paws Veterinary</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 col-12">
+          <a href="/clinicsPage.html" class="text-decoration-none">
+            <div class="card clinic-card">
+              <img
+                src="/img/DALL·E 2024-11-24 19.47.42 - A visually appealing and professional banner-style image for a veterinary clinic named 'Furry Friends Clinic'. The text 'Furry Friends Clinic' is prom.webp"
+                class="card-img-top"
+                alt="Furry Friends Clinic" />
+              <div class="card-body">
+                <h5 class="card-title text-center">Furry Friends Clinic</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 col-12">
+          <a href="/clinicsPage.html" class="text-decoration-none">
+            <div class="card clinic-card">
+              <img
+                src="/img/fa79e117-073a-4572-b949-a8f2428a000e.webp"
+                class="card-img-top"
+                alt="The Pet Wellness Center" />
+              <div class="card-body">
+                <h5 class="card-title text-center">The Pet Wellness Center</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
+
+    <div class="container my-5">
+      <h1 class="text-center text-success">Pet Products</h1>
+      <p class="text-center mb-4 text-muted">
+        Explore our wide range of pet products tailored for your furry friends!
+      </p>
+
+      <div class="row g-4">
+        <!-- Product 1 -->
+        <div class="col-md-4 col-12">
+          <a href="/productDetails.html" class="text-decoration-none">
+            <div class="card product-card">
+              <img
+                src="/img/C71NHS-11__59921.jpg"
+                class="card-img-top product-image"
+                alt="Luxury Cat Bed" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Luxury Cat Bed</h5>
+                <p class="product-price">25000 IQD</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Product 2 -->
+        <div class="col-md-4 col-12">
+          <a href="/product2.html" class="text-decoration-none">
+            <div class="card product-card">
+              <img
+                src="/img/dog-bone-rope-chew-toy-702096_600x.webp"
+                class="card-img-top product-image"
+                alt="Dog Chew Toy" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Dog Chew Toy</h5>
+                <p class="product-price">15000 IQD</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Product 3 -->
+        <div class="col-md-4 col-12">
+          <a href="/product3.html" class="text-decoration-none">
+            <div class="card product-card">
+              <img
+                src="/img/cat-claws-naturally-nip-catnip-4-oz-bag.jpg"
+                class="card-img-top product-image"
+                alt="Organic Catnip" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Organic Catnip</h5>
+                <p class="product-price">10000 IQD</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+      <p>© 2024 AdoptKa. All Rights Reserved | Designed with ❤️ for pets.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+
+    <!-- JavaScript for Dynamic Pets -->
+    <script>
+      function displayPets() {
+        const pets = JSON.parse(localStorage.getItem("pets")) || [];
+        const rowContainer = document.getElementById("row");
+
+        pets.forEach((pet) => {
+          const col = document.createElement("div");
+          col.className = "col-md-4 col-12";
+
+          col.innerHTML = `
+            <div class="card" style="width: 18rem">
+              <a href="/pet.html">
+                <img
+                  src="${pet.photo}"
+                  class="card-img-top"
+                  alt="${pet.name}"
+                />
+              </a>
+              <div class="card-body">
+                <p class="card-text text-center">
+                  ${pet.name} | ${pet.type} | ${pet.description}
+                </p>
+              </div>
+            </div>
+          `;
+          rowContainer.appendChild(col);
+        });
+      }
+
+      // Call the function to display pets when the page loads
+      document.addEventListener("DOMContentLoaded", displayPets);
+
+      const petsContainer = document.getElementById("petsContainer");
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      petsContainer.addEventListener("mousedown", (e) => {
+        isDown = true;
+        petsContainer.classList.add("active");
+        startX = e.pageX - petsContainer.offsetLeft;
+        scrollLeft = petsContainer.scrollLeft;
+      });
+
+      petsContainer.addEventListener("mouseleave", () => {
+        isDown = false;
+        petsContainer.classList.remove("active");
+      });
+
+      petsContainer.addEventListener("mouseup", () => {
+        isDown = false;
+        petsContainer.classList.remove("active");
+      });
+
+      petsContainer.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - petsContainer.offsetLeft;
+        const walk = (x - startX) * 2; // Adjust scroll speed
+        petsContainer.scrollLeft = scrollLeft - walk;
+      });
+    </script>
   </body>
 </html>
