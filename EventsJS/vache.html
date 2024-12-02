@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="Savesta">Komalala</button>
+
+    <input type="range" name="dd" id="range" min="1" max="50" value="50" />
+    <p id="output">50</p>
+    <p id="output2">50</p>
+    <script>
+      Svsta = document
+        .getElementById("Savesta")
+        .addEventListener("click", (event) => {
+          console.log("Clicked");
+        });
+
+      document.getElementById("range").addEventListener("input", (event) => {
+        document.getElementById("output").textContent = event.target.value;
+      });
+
+      document.getElementById("output").addEventListener("keydown", () => {
+        document.getElementById("output2").textContent = "50 is no more";
+      });
+    </script>
+  </body>
+</html>

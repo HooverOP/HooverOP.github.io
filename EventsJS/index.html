@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Elements and Events</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      #hoverBox {
+        width: 200px;
+        height: 100px;
+        margin-top: 10px;
+        border: 2px solid blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: lightgray;
+      }
+
+      #rangeValue {
+        font-weight: bold;
+      }
+
+      .checkbox-container {
+        margin-top: 10px;
+      }
+
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="h1a">Interactive HTML Elements with JavaScript Events</h1>
+
+    <!-- Button -->
+    <button id="btn1">Click Me (Click Event)</button>
+    <br /><br />
+    <hr />
+    <!-- Image -->
+    <img
+      id="image"
+      src="AUK1.jpeg"
+      alt="AUK Logo"
+      style="display: block; margin-top: 10px" />
+    <br />
+    <hr />
+    <br />
+
+    <!-- Hover Box -->
+    <div id="hoverBox">Hover over me</div>
+
+    <br />
+    <hr />
+    <br />
+    <!-- Input Range -->
+    <label for="range">Adjust Range (Input Event): </label>
+    <input type="range" id="range" min="1" max="100" value="50" />
+    <span id="rangeValue">50</span>
+
+    <br /><br />
+    <!-- Checkboxes -->
+    <div class="checkbox-container">
+      <label><input type="checkbox" id="checkbox1" /> Option 1</label>
+      <label><input type="checkbox" id="checkbox2" /> Option 2</label>
+    </div>
+
+    <br /><br />
+    <!-- Text Input -->
+    <input
+      type="text"
+      id="textInput"
+      placeholder="Type something (Keyup Event)"
+      style="display: block; margin-top: 10px" />
+    <br />
+    <hr />
+    <br />
+
+    <!-- Form -->
+    <form id="form">
+      <label for="formInput">Form Input:</label>
+      <input type="text" id="formInput" placeholder="Submit and See Event" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <br />
+    <hr />
+    <br />
+    <!-- Dropdown -->
+    <select id="dropdown" style="display: block; margin-top: 10px">
+      <option value="">Select an Option</option>
+      <option value="Option 1">Option 1</option>
+      <option value="Option 2">Option 2</option>
+      <option value="Option 3">Option 3</option>
+    </select>
+
+    <br />
+    <div id="output">Output will appear here...</div>
+    <script>
+      // Click Event
+      btn1 = document.getElementById("btn1");
+      btn1.addEventListener("click", btnClick);
+      btn1.addEventListener("mouseover", btnHover);
+      btn1.addEventListener("mouseout", btnHoverend);
+      function btnClick() {
+        document.getElementById("output").textContent = "Button was clicked!";
+      }
+      function btnHover() {
+        btn1.style.backgroundColor = "Orange";
+      }
+      function btnHoverend() {
+        btn1.style.backgroundColor = "lightgray";
+      }
+
+      // Mouse Events for Image
+      image = document.getElementById("image");
+      image.addEventListener("mouseenter", imgmouseenter);
+      image.addEventListener("mouseleave", imgmouseleave);
+      function imgmouseenter() {
+        image.style.border = "3px solid orange";
+        document.getElementById("output").textContent =
+          "Mouse entered the image.";
+      }
+      function imgmouseleave() {
+        image.style.border = "none";
+        document.getElementById("output").textContent = "Mouse left the image.";
+      }
+
+      // // Hover Event
+      const hoverBox = document.getElementById("hoverBox");
+      hoverBox.addEventListener("", () => {
+        hoverBox.textContent = "You are hovering!";
+        hoverBox.style.backgroundColor = "lightgreen";
+      });
+      hoverBox.addEventListener("mouseout", () => {
+        hoverBox.textContent = "Hover over me";
+        hoverBox.style.backgroundColor = "lightgray";
+      });
+
+      // // Input Event for Range
+      const range = document.getElementById("range");
+      const rangeValue = document.getElementById("rangeValue");
+      range.addEventListener("input", rangeinput);
+      function rangeinput(event) {
+        rangeValue.textContent = event.target.value;
+        document.getElementById("output").textContent =
+          "Range value: " + event.target.value;
+      }
+
+      output = document.getElementById("output");
+      // // Checkbox Change Events
+      const checkbox1 = document.getElementById("checkbox1");
+      const checkbox2 = document.getElementById("checkbox2");
+      checkbox1.addEventListener("change", () => {
+        document.getElementById("output").textContent = checkbox1.checked
+          ? "Checkbox 1 is checked."
+          : "Checkbox 1 is unchecked.";
+      });
+      checkbox2.addEventListener("change", () => {
+        output.textContent = checkbox2.checked
+          ? "Checkbox 2 is checked."
+          : "Checkbox 2 is unchecked.";
+      });
+
+      // // Keyup Event for Text Input
+      const textInput = document.getElementById("textInput");
+      textInput.addEventListener("keydown", (event) => {
+        output.textContent = "You typed: " + event.target.value;
+      });
+
+      // Form Submit Event
+      const form = document.getElementById("form");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent form from actually submitting
+        const formInputValue = document.getElementById("formInput").value;
+        document.getElementById("output").textContent =
+          "Form submitted with input: " + formInputValue;
+      });
+
+      // Change Event for Dropdown
+      const dropdown = document.getElementById("dropdown");
+      dropdown.addEventListener("change", (event) => {
+        document.getElementById("output").textContent =
+          "Selected: " + event.target.value;
+      });
+    </script>
+  </body>
+</html>
